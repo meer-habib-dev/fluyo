@@ -11,7 +11,11 @@ const Stack = createStackNavigator<StackNavigationParamList>();
 const RootNavigation = (): JSX.Element => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ExerciseScreen">
+      <Stack.Navigator
+        initialRouteName="ExerciseScreen"
+        screenOptions={{
+          headerShown: false,
+        }}>
         <Stack.Screen name="ExerciseScreen" component={ExerciseScreen} />
       </Stack.Navigator>
     </NavigationContainer>
