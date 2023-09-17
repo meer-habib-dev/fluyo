@@ -9,6 +9,7 @@ import {styles} from './exercise_screen_style';
 import {ExerciseType} from '../../firebase/seedData';
 
 const introText: string = 'Fill in the missing word';
+const FinishExercise: string = 'Congrats!!!\n Exercise Completed!';
 
 const ExerciseScreen = (): JSX.Element => {
   const [exercise, setExercise] = useState<ExerciseType[] | null>(null);
@@ -18,6 +19,7 @@ const ExerciseScreen = (): JSX.Element => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [answerSubmitted, setAnswerSubmitted] = useState<boolean | null>(null);
   const [exerciseReport, setExerciseReport] = useState<string>('');
+  const [isFinished, setFinished] = useState<boolean>(false);
 
   // Checking correct
   const checkAnswer = () => {
@@ -34,12 +36,16 @@ const ExerciseScreen = (): JSX.Element => {
   // Resetting exercise based on answer
   const resetExercise = async () => {
     if (exercise!.length - 1 === activeExerciseIndex) {
+      setFinished(true);
       setIsCorrect(null);
       setSelectedIndex(null);
       setSelectedOption(null);
       setAnswerSubmitted(null);
       setExerciseReport('');
       setActiveExerciseIndex(0);
+      setTimeout(() => {
+        setFinished(false);
+      }, 3000);
     } else if (!isCorrect) {
       setActiveExerciseIndex(prev => prev);
       setIsCorrect(null);
@@ -79,84 +85,90 @@ const ExerciseScreen = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.body}>
-        <Text style={styles.titleText}>{introText}</Text>
-        <View>
-          <View style={styles.mainTextWrapper}>
-            <Text style={styles.exampleText}>
-              {exercise[activeExerciseIndex]?.exampleText}
-            </Text>
+      {isFinished ? (
+        <View style={styles.finishedWrapper}>
+          <Text style={styles.finishedText}>{FinishExercise}</Text>
+        </View>
+      ) : (
+        <View style={styles.body}>
+          <Text style={styles.titleText}>{introText}</Text>
+          <View>
+            <View style={styles.mainTextWrapper}>
+              <Text style={styles.exampleText}>
+                {exercise[activeExerciseIndex]?.exampleText}
+              </Text>
 
-            {/* Question Section */}
-            {selectedOption ? (
-              <View style={styles.selectedOPT}>
-                {exercise[activeExerciseIndex].questionText?.map(
-                  (item, index) => {
-                    return (
-                      <View key={index}>
-                        {item === 'blank' ? (
-                          <OptionsButton
-                            selected={false}
-                            answerSubmitted={answerSubmitted}
-                            isCorrect={isCorrect}
-                            onPress={() => null}
-                            text={selectedOption!!}
-                            selectedOpt
-                          />
-                        ) : (
-                          <Text style={styles.questionText}>{item}</Text>
-                        )}
-                      </View>
-                    );
-                  },
+              {/* Question Section */}
+              {selectedOption ? (
+                <View style={styles.selectedOPT}>
+                  {exercise[activeExerciseIndex].questionText?.map(
+                    (item, index) => {
+                      return (
+                        <View key={index}>
+                          {item === 'blank' ? (
+                            <OptionsButton
+                              selected={false}
+                              answerSubmitted={answerSubmitted}
+                              isCorrect={isCorrect}
+                              onPress={() => null}
+                              text={selectedOption!!}
+                              selectedOpt
+                            />
+                          ) : (
+                            <Text style={styles.questionText}>{item}</Text>
+                          )}
+                        </View>
+                      );
+                    },
+                  )}
+                </View>
+              ) : (
+                <Text style={styles.questionTextMain}>
+                  {exercise[activeExerciseIndex]?.question}
+                </Text>
+              )}
+
+              {/* Option Section */}
+              <View style={styles.optionWrapper}>
+                {exercise[activeExerciseIndex]?.options.map(
+                  (option: string, index: number) => (
+                    <OptionsButton
+                      key={index}
+                      selected={index === selectedIndex}
+                      answerSubmitted={answerSubmitted}
+                      onPress={() => {
+                        setSelectedOption(option);
+                        setSelectedIndex(index);
+                        setAnswerSubmitted(null);
+                      }}
+                      text={option}
+                      isCorrect={null}
+                      selectedOpt={false}
+                    />
+                  ),
                 )}
               </View>
-            ) : (
-              <Text style={styles.questionTextMain}>
-                {exercise[activeExerciseIndex]?.question}
-              </Text>
-            )}
+            </View>
 
-            {/* Option Section */}
-            <View style={styles.optionWrapper}>
-              {exercise[activeExerciseIndex]?.options.map(
-                (option: string, index: number) => (
-                  <OptionsButton
-                    key={index}
-                    selected={index === selectedIndex}
-                    answerSubmitted={answerSubmitted}
-                    onPress={() => {
-                      setSelectedOption(option);
-                      setSelectedIndex(index);
-                      setAnswerSubmitted(null);
-                    }}
-                    text={option}
-                    isCorrect={null}
-                    selectedOpt={false}
-                  />
-                ),
+            {/* Report Section */}
+            <View>
+              {answerSubmitted === null ? (
+                <AppButton
+                  onPress={checkAnswer}
+                  optionCheck={!!selectedOption}
+                  text={selectedOption ? 'CHECK ANSWER' : 'CONTINUE'}
+                />
+              ) : (
+                <ReportButton
+                  isCorrect={isCorrect}
+                  resetExercise={resetExercise}
+                  exerciseReport={exerciseReport}
+                />
               )}
             </View>
           </View>
-
-          {/* Report Section */}
-          <View>
-            {answerSubmitted === null ? (
-              <AppButton
-                onPress={checkAnswer}
-                optionCheck={!!selectedOption}
-                text={selectedOption ? 'CHECK ANSWER' : 'CONTINUE'}
-              />
-            ) : (
-              <ReportButton
-                isCorrect={isCorrect}
-                resetExercise={resetExercise}
-                exerciseReport={exerciseReport}
-              />
-            )}
-          </View>
         </View>
-      </View>
+      )}
     </View>
   );
 };

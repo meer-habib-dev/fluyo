@@ -28,11 +28,12 @@ const OptionsButton = ({
               ? isCorrect
                 ? theme.color.success
                 : theme.color.error
-              : theme.color.disableButton
-              ? selected
-                ? theme.color.selectEmpty
-                : theme.color.textColor
-              : theme.color.disableButton,
+              : answerSubmitted && !selectedOpt
+              ? theme.color.disableButton
+              : selected
+              ? theme.color.selectEmpty
+              : theme.color.textColor,
+          // : theme.color.disableButton,
         },
       ]}
       onPress={onPress}>

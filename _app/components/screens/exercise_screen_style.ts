@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     color: theme.color.textColor,
     fontWeight: '500',
-    marginRight: 10,
+    marginRight: theme.border[1],
   },
   questionTextMain: {
     textAlign: 'center',
@@ -55,5 +55,13 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  finishedWrapper: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  finishedText: {
+    textAlign: 'center',
+    lineHeight: theme.border[3],
+    fontWeight: '600',
+    fontSize: theme.spacing[5],
+    color: theme.color.textColor,
   },
 });

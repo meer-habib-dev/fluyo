@@ -4,9 +4,9 @@ import {theme} from '../../../../@lib/theme/theme';
 export const styles = StyleSheet.create({
   btn: {
     borderRadius: theme.border[5],
-    paddingVertical: 20,
-    marginHorizontal: 20,
-    marginBottom: 80,
+    paddingVertical: theme.border[2],
+    marginHorizontal: theme.border[2],
+    marginBottom: theme.border[8],
   },
   text: {
     textAlign: 'center',

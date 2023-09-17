@@ -4,9 +4,9 @@ export const styles = StyleSheet.create({
   btn: {
     borderRadius: theme.border[2],
     shadowColor: '#000',
-    paddingHorizontal: 40,
-    marginBottom: 10,
-    marginRight: 10,
+    paddingHorizontal: theme.border[4],
+    marginBottom: theme.border[1],
+    marginRight: theme.border[1],
     padding: theme.spacing[3],
     shadowOffset: {
       width: 0,
