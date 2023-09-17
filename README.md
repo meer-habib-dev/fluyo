@@ -6,13 +6,13 @@ Here is the short and sweet spec of Fluyo coding test task app.
 
 ## Demo
 
-- App Download Link - https://portal.testapp.io/apps/install/JbQgzqgW0Zdr3
+- App Download Link - https://portal.testapp.io/apps/install/878jagpVnrkrk
 
 ## Tech Stack used in Fluyo coding test
 
-- [React Native CLI](https://nodejs.org) and npm (Recommended: Use [nvm](https://github.com/nvm-sh/nvm))
-- [React Navigation] - Used to define stack screen
-- [Firebase & Firestore] - Used seed exercise to firestore and fetch firestore data
+- [React Native CLI] - Used to define app screens and access native feature.
+- [React Navigation] - Used to define stack screen.
+- [Firebase & Firestore] - Used seed exercise to firestore and fetch firestore data.
 
 ## Folder structure
 
