@@ -1,79 +1,35 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Planet Hunt
 
-# Getting Started
+[![Moove It](https://circleci.com/gh/moove-it/react-native-template.svg?style=svg)](https://app.circleci.com/pipelines/github/moove-it/react-native-template?branch=master)
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Here is the short and sweet spec of Fluyo coding test task app.
 
-## Step 1: Start the Metro Server
+## Demo
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- App Download Link - https://portal.testapp.io/apps/install/JbQgzqgW0Zdr3
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Tech Stack used in Fluyo coding test
 
-```bash
-# using npm
-npm start
+- [React Native CLI](https://nodejs.org) and npm (Recommended: Use [nvm](https://github.com/nvm-sh/nvm))
+- [React Navigation] - Used to define stack screen
+- [Firebase & Firestore] - Used seed exercise to firestore and fetch firestore data
 
-# OR using Yarn
-yarn start
-```
+## Folder structure
 
-## Step 2: Start your Application
+This template follows a very simple project structure:
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- `_app`: This folder is the main container of all the code inside your application.
+  - `@lib`:
+    - `theme` : Defined the theme constants
+  - `firebase`: Contains the required files to seed data in firestore
+  - `components`:
+    - `navigation`: Folder to store the navigators.
+      - `StackNavigator` :
+      - `TabNavigator` :
+    - `screens`: Folder that contains all your application screens/features.
+      - `Screen`: Each screen should be stored inside its folder and inside it a file for its code and a separate one for the styles and tests.
+        - `screen.tsx`
+        - `Screen_styles.ts`
+        - `utils` : contains respective screens data, hooks and functions
+  - `App.tsx`: Main component that starts your whole app.
+  - `index.ts`: Entry point of your application as per React-Native standards.
