@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "217477874053",
+    "project_id": "fluyo-cc670",
+    "storage_bucket": "fluyo-cc670.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217477874053:android:505a162bac1fd7829844ec",
+        "android_client_info": {
+          "package_name": "com.flyo_"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcrLGeqnC8AlcboOBzJ2SIEPqjvMfejjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
