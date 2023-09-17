@@ -1,4 +1,4 @@
-# Planet Hunt
+# Fluyo Task
 
 [![Moove It](https://circleci.com/gh/moove-it/react-native-template.svg?style=svg)](https://app.circleci.com/pipelines/github/moove-it/react-native-template?branch=master)
 
